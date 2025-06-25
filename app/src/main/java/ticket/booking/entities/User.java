@@ -13,6 +13,7 @@ import java.util.List;
 
 @JsonNaming (PropertyNamingStrategy.SnakeCaseStrategy.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
+
 public class User {
 
     private String name;
@@ -49,6 +50,8 @@ public class User {
     public void printTickets(){
         for (int i = 0; i<ticketsBooked.size(); i++){
             System.out.println(ticketsBooked.get(i).getTicketInfo());
+            //explaination: this is a method to print the tickets booked by the user
+            //it is a for loop to iterate through the tickets booked by the user
         }
     }
 

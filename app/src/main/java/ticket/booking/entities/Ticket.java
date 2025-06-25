@@ -13,6 +13,8 @@ import java.sql.Date;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
+
+
 public class Ticket{
 
     private String ticketId;
@@ -29,6 +31,8 @@ public class Ticket{
 
     public Ticket(){}
 
+
+    // Constructor for Ticket
     public Ticket(String ticketId, String userId, String source, String destination, String dateOfTravel, Train train){
         this.ticketId = ticketId;
         this.userId = userId;
@@ -38,10 +42,12 @@ public class Ticket{
         this.train = train;
     }
 
+    // Getter and Setter for Ticket
     public String getTicketInfo(){
         return String.format("Ticket ID: %s belongs to User %s from %s to %s on %s", ticketId, userId, source, destination, dateOfTravel);
     }
 
+    // Getter and Setter for Ticket ID
     public String getTicketId(){
         return ticketId;
     }
@@ -50,6 +56,7 @@ public class Ticket{
         this.ticketId = ticketId;
     }
 
+    // Getter and Setter for Source
     public String getSource(){
         return source;
     }
@@ -66,6 +73,7 @@ public class Ticket{
         this.userId = userId;
     }
 
+    // Getter and Setter for Destination
     public String getDestination(){
         return destination;
     }
@@ -74,6 +82,7 @@ public class Ticket{
         this.destination = destination;
     }
 
+    // Getter and Setter for Date of Travel
     public String getDateOfTravel(){
         return dateOfTravel;
     }
@@ -82,6 +91,7 @@ public class Ticket{
         this.dateOfTravel = dateOfTravel;
     }
 
+    // Getter and Setter for Train
     public Train getTrain(){
         return train;
     }

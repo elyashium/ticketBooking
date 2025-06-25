@@ -16,22 +16,37 @@ public class TrainService {
 
     private List<Train> trainList;
     private ObjectMapper objectMapper = new ObjectMapper();
+    //object mapper is used to convert the json file to a list of trains
+    //its a powerful libaray called "jackson", convert json that is not readable by java objects to
+    //java objects and vice versa
     private static final String TRAIN_DB_PATH = "../localDB/trains.json";
 
+    //constructor for train service
     public TrainService() throws IOException {
         File trains = new File(TRAIN_DB_PATH);
+        //File is a class in java that represents a file in the file system
         trainList = objectMapper.readValue(trains, new TypeReference<List<Train>>() {});
+        //readValue is a method in object mapper that reads the json file and converts it to a list of trains
+        //TypeReference is a class in java that represents a type reference
     }
 
+
+    //search trains is a method that searches for trains between a source and destination
+    //public main method that others can call like app.java
     public List<Train> searchTrains(String source, String destination) {
         return trainList.stream().filter(train -> validTrain(train, source, destination)).collect(Collectors.toList());
+        //stream is a class in java that represents a stream of data
+        //filter is a method in stream that filters the data based on a condition
+        //collect is a method in stream that collects the data into a list
     }
 
+    //add train is a method that adds a new train to the list of trains
     public void addTrain(Train newTrain) {
         // Check if a train with the same trainId already exists
         Optional<Train> existingTrain = trainList.stream()
                 .filter(train -> train.getTrainId().equalsIgnoreCase(newTrain.getTrainId()))
                 .findFirst();
+                
 
         if (existingTrain.isPresent()) {
             // If a train with the same trainId exists, update it instead of adding a new one
